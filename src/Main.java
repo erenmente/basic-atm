@@ -27,7 +27,7 @@ class main{
                 continue;
             }
             switch(secim){
-                case 1:
+                case 1://Para çekme kısmı
                     System.out.print("Çekmek istediğiniz tutarı giriniz:");
                     if(input.hasNextInt()){
                         cekilecekTutar=input.nextInt();
@@ -54,7 +54,7 @@ class main{
                     }
                     break;
 
-                case 2:
+                case 2://Para yatırma kısmı
                     System.out.print("Yatırmak istediğiniz tutarı gitiniz:");
                     if(input.hasNextInt()){
                         int yatirilacakTutar=input.nextInt();
@@ -66,7 +66,7 @@ class main{
                         System.out.println("Sayısal bir değer giriniz.");
                     }
                     break;
-                case 3:
+                case 3://Çıkış yapma kısmı
                     System.out.println("İyi günler dileriz.");
                     input.close();//temzilik yapar.
                     return;//bulunduğu metoda son verir.
