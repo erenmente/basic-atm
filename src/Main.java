@@ -31,6 +31,12 @@ class main{
                     System.out.print("Çekmek istediğiniz tutarı giriniz:");
                     if(input.hasNextInt()){
                         cekilecekTutar=input.nextInt();
+                    else if(cekilecekTutar>bakiye){
+                            System.out.println("yetersiz bakiye.");
+                        }
+                        else if(cekilecekTutar>paraCekmeLimiti){
+                            System.out.println("Günlük limiti aştınız");
+                        }
                     }
                     else{
                         System.out.println("Geçerli bir tutar giriniz.");
