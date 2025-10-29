@@ -1,14 +1,12 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
-class main{
+class Atm{
     public static void main(String[] args){
-        int bakiye=1000;
-        int paraCekmeLimiti=500;
-        int cekilecekTutar;
+        Scanner input=new Scanner(System.in);//Scanner sınıfı klavyeden veri alır.
+        BankaHesabi benimHesabim=new BankaHesabi(1000,1500);
         int secim;
         boolean dongu=true;
-        Scanner input=new Scanner(System.in);//Scanner sınıfı klavyeden veri alır.
+
         while(dongu){//while true olduğu sürece devam ettir.
             System.out.println("------------ERENBANK ATM'YE HOŞGELDİNİZ------------");
 
@@ -16,7 +14,7 @@ class main{
             System.out.println("1:Para çekmek");
             System.out.println("2:Para yatırmak");
             System.out.println("3:Çıkış");
-            System.out.println("Mevcut bakiyeniz:"+bakiye+"TL");
+            System.out.println("Mevcut bakiyeniz:"+benimHesabim.bakiye+"TL");
             System.out.print("Yapmak istediğiniz işlemin numarasını yazınız(1-3):");
             if(input.hasNextInt()){//girilen değerin sayısal bir değer olup olmadığına bakar.
                 secim=input.nextInt();
@@ -28,71 +26,21 @@ class main{
             }
             switch(secim){
                 case 1://Para çekme kısmı
-                    System.out.print("Çekmek istediğiniz tutarı giriniz:");
-                    if(input.hasNextInt()){
-                        cekilecekTutar=input.nextInt();
-                    else if(cekilecekTutar>bakiye){
-                            System.out.println("yetersiz bakiye.");
-                        }
-                        else if(cekilecekTutar>paraCekmeLimiti){
-                            System.out.println("Günlük limiti aştınız");
-                        }
-                    }
-                    else{
-                        System.out.println("Geçerli bir tutar giriniz.");
-                        input.next();//aldığı değeri string olarak döndürdü ama değişken atanmadığı için yok sayılıyor.
-                        continue;
-                    }
-                    if (cekilecekTutar<=0){
-                        System.out.println("Lütfen pozitif bir sayı giriniz.");
-                    }
-                    else {
-                        System.out.println("İşleminiz başarıyla gerçekleştirilmiştir");
-                        bakiye=bakiye-cekilecekTutar;
-                        paraCekmeLimiti=paraCekmeLimiti-cekilecekTutar;
-                        System.out.println("Yeni bakiyeniz "+bakiye+" TL");
-                    }
+                    benimHesabim.paraCekme(input);
                     break;
 
                 case 2://Para yatırma kısmı
-                    System.out.print("Yatırmak istediğiniz tutarı gitiniz:");
-                    if(input.hasNextInt()){
-                        int yatirilacakTutar=input.nextInt();
-                        bakiye=bakiye+yatirilacakTutar;
-                        System.out.println("Yeni bakiyeniz "+bakiye+" TL");
-
-                    }
-                    else {
-                        System.out.println("Sayısal bir değer giriniz.");
-                    }
+                    benimHesabim.paraYatirma(input);
                     break;
                 case 3://Çıkış yapma kısmı
                     System.out.println("İyi günler dileriz.");
                     input.close();//temzilik yapar.
-                    return;//bulunduğu metoda son verir.
+                    dongu=false;//bulunduğu metoda son verir.
+                    break;
+                default:
+                    System.out.println("Geçersiz seçim. Lütfen 1-3 arası bir değer girin.");
+
             }
-
-
-
-
-
-
-
-
-
-
-
-            //            System.out.println("Başka bir isteğiniz var mı");
-//            String musteriIstegi = input.nextLine();
-//            musteriIstegi=musteriIstegi.toLowerCase();
-//            if(musteriIstegi=="evet"){
-//                System.out.print("İyi günler");
-//                input.close();
-//            }
-//            else if(musteriIstegi=="hayır"){
-//                dongu=false;
-//            }
-
         }
 
 
