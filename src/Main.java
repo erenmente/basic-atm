@@ -65,11 +65,11 @@ public class Main {
 class ATM {
 
     int bakiye = 1000;
-    int gunlukParaCekmeLimiti;
+    int gunlukParaCekmeLimiti=1000;
 
     public void paraCekme(int miktar) {
 
-        gunlukParaCekmeLimiti = 1000;
+
 
         if (miktar > bakiye) {
             System.out.println("Yetersiz bakiyeyi.");
@@ -91,6 +91,7 @@ class ATM {
 
         if (miktar > 0) {
             bakiye = miktar + bakiye;
+            System.out.println("İşlem başarılı. Yeni bakiyeniz: " + bakiye + " TL");
         } else {
             System.out.println("Lütfen pozitif bir değer giriniz.");
         }
